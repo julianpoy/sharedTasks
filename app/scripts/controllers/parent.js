@@ -1,5 +1,4 @@
 angular.module('starter.controllers', [])
-
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
   // With the new view caching in Ionic, Controllers are only called
@@ -16,7 +15,14 @@ angular.module('starter.controllers', [])
   $ionicModal.fromTemplateUrl('templates/login.html', {
     scope: $scope
   }).then(function(modal) {
-    $scope.modal = modal;
+    $scope.loginModal = modal;
+  });
+
+  // Create the login modal that we will use later
+  $ionicModal.fromTemplateUrl('templates/login.html', {
+    scope: $scope
+  }).then(function(modal) {
+    $scope.loginModal = modal;
   });
 
   // Triggered in the login modal to close it
@@ -25,7 +31,7 @@ angular.module('starter.controllers', [])
   };
 
   // Open the login modal
-  $scope.login = function() {
+  $scope.showLogin = function() {
     $scope.modal.show();
   };
 
@@ -40,13 +46,3 @@ angular.module('starter.controllers', [])
     }, 1000);
   };
 })
-
-.controller('ListsCtrl', function($scope) {
-  $scope.lists = [
-    { title: 'Family Shopping', id: 1, people: {} },
-    { title: 'School Project', id: 2, people: {} }
-  ];
-})
-
-.controller('ListCtrl', function($scope, $stateParams) {
-});
